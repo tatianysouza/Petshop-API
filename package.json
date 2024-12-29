@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
+    "petshop-api": "file:",
     "uuid": "^11.0.3"
   },
   "devDependencies": {
