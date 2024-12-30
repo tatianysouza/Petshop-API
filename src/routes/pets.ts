@@ -73,4 +73,20 @@ router.patch('/pets/:id/vaccinated', (req: Request, res: any) => {
   return res.status(200).json(pet);
 });
 
+// rota para excluir pets pelo id
+router.delete('/pets/:id', (req: Request, res: any) => {
+  const { id } = req.params;
+  const petshop = req.petshop;
+
+  const petIndex = petshop.pets.findIndex((pet) => pet.id === id);
+  
+  if (petIndex === -1) {
+    return res.status(404).json({ error: 'Pet não encontrado' });
+  }
+
+  petshop.pets.splice(petIndex, 1);
+  
+  return res.status(200).json(petshop.pets);
+});
+
 export default router;
