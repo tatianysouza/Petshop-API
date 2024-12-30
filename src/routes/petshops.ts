@@ -9,6 +9,7 @@ const validateCNPJ = (cnpj: string) => {
     return cnpjRegex.test(cnpj);
 };
 
+// rota para criar um novo petshop
 router.post('/petshops', (req: Request, res: any) => { // response não consegue ser tipado
   const { name, cnpj } = req.body;
 
