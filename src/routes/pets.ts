@@ -57,5 +57,20 @@ router.put('/pets/:id', (req: Request, res: any) => {
   return res.status(200).json(pet);
 });
 
+// rota para vacinar um pet
+router.patch('/pets/:id/vaccinated', (req: Request, res: any) => {
+  const { id } = req.params;
+  const petshop = req.petshop;
+
+  const pet = petshop.pets.find((p) => p.id === id);
+
+  if (!pet) {
+    return res.status(404).json({ error: 'Pet não encontrado' });
+  }
+
+  pet.vaccinated = true;
+
+  return res.status(200).json(pet);
+});
 
 export default router;
