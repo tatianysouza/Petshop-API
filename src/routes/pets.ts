@@ -25,4 +25,14 @@ router.post('/pets', (req: Request, res: any) => {
   return res.status(201).json(newPet);
 });
 
+router.get('/pets', (req: Request, res: any) => {
+  const petshop = req.petshop;
+
+  if (!petshop) {
+    return res.status(404).json({ error: 'User not exists' });
+  }
+
+  return res.status(200).json(petshop.pets);
+});
+
 export default router;
